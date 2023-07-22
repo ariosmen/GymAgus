@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./cargar.css";
-
+import "../css/cargar.css";
 
 export default function Cargar() {
-  
   
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -130,11 +128,11 @@ export default function Cargar() {
           />
         </div>
         <div className="flex justify-between p-4">
-          <button className="text-lg hover:text-cyan-400">
+          <button className="text-lg text-white hover:text-cyan-400">
             {params.id ? "Editar" : "Guardar"}
           </button>
           <button
-            className="text-lg hover:text-red-600"
+            className="text-lg text-white hover:text-red-600"
             onClick={delete_alumno}
           >
             {params.id ? "Eliminar" : ""}

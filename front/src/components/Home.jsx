@@ -1,5 +1,5 @@
-import img from "./Gym.jpg"
-import "./home.css"
+import img from "../img/Gym.jpg";
+import "../css/home.css";
 
 export default function Home() {
   return (

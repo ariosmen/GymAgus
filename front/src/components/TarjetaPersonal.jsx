@@ -20,7 +20,7 @@ export default function TarjetaPersonal() {
   return (
     <>
       <div
-        className="bg-zinc-950 ml-auto mr-auto mt-52 flex flex-col p-5 rounded-xl border w-96"
+        className="bg-zinc-950 ml-auto mr-auto mt-52 flex flex-col p-5 rounded-xl border w-4/12"
         onClick={() => {
           navigate(`/alumnos/${alumno.id}`);
         }}
