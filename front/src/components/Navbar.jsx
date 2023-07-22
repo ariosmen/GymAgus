@@ -2,7 +2,7 @@ import agus from "../img/agus.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function Navbar({ cantidad }) {
+export default function Navbar({alumnos}) {
 
   const [alumno, setAlumno] = useState("")
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ export default function Navbar({ cantidad }) {
     e.preventDefault()
     navigate(`/alumnos/alumno/${alumno}`)
   }
-  
+
   return (
     <nav className="bg-gray-800">
       <div className="px-2 sm:px-6 lg:px-8">
@@ -38,7 +38,7 @@ export default function Navbar({ cantidad }) {
             </div>
           </div>
           <div className="text-white">
-            Cantidad de Alumnos: <span>{cantidad}</span>
+            Cantidad de Alumnos: <span>{alumnos.length}</span>
           </div>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <label className="text-white p">Buscar</label>

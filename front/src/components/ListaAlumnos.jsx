@@ -1,18 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Alumnos from "../components/Alumnos";
 import Header from "./Header";
 
-export default function HomePage() {
-  const [alumnos, setAlumnos] = useState([]);
-
-  useEffect(() => {
-    const fetchalumnos = async () => {
-      const res = await axios.get("http://localhost:8000/alumnos");
-      setAlumnos(res.data);
-    }
-    fetchalumnos();
-  }, []);
+export default function HomePage({alumnos}) {
 
   return (
     <>
