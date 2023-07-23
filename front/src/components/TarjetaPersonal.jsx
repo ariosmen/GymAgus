@@ -3,27 +3,30 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function TarjetaPersonal() {
-
   const navigate = useNavigate();
 
-    const [alumno, setAlumno] = useState([]);
-    const params = useParams();
+  const [alumno, setAlumno] = useState([]);
+  const params = useParams();
 
-    useEffect(() => {
-      const fetchalumno = async () => {
-        const res = await axios.get(`http://localhost:8000/alumnos/${params.id}`);
+  useEffect(() => {
+    const fetchalumno = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/alumnos/${params.id}`
+        );
         setAlumno(res.data);
-      };
-      fetchalumno();
-    }, [params]);
+      } catch (e) {
+        navigate('/alumnos')
+        alert("El usuario con ese ID no existe");
+      }
+    };
+    fetchalumno();
+  }, [params]);
 
   return (
     <>
       <div
         className="bg-zinc-950 ml-auto mr-auto mt-52 flex flex-col p-5 rounded-xl border w-4/12"
-        onClick={() => {
-          navigate(`/alumnos/${alumno.id}`);
-        }}
       >
         <h2 className="text-white text-5xl m-1">
           {alumno.nombre} {alumno.apellido}
@@ -40,13 +43,13 @@ export default function TarjetaPersonal() {
           <button
             className="text-white hover:text-cyan-400"
             onClick={() => {
-                navigate(`/alumnos/${params.id}`);
+              navigate(`/alumnos/${params.id}`);
             }}
-            >
+          >
             EDITAR
           </button>
           <button
-              className="text-white hover:text-green-400"
+            className="text-white hover:text-green-400"
             onClick={() => {
               navigate("/alumnos");
             }}

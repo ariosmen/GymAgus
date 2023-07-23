@@ -8,7 +8,10 @@ alumnos = APIRouter()
 
 @alumnos.get('/alumnos/{id}', response_model=esquemas.Alumnos)
 def get_alumnos(id: int, db: Session = Depends(get_db)):
-    return crud.get_alumno(db, id)
+    get_alumno = crud.get_alumno(db, id)
+    if get_alumno is None:
+        raise HTTPException(400, "No existe un alumno con ese ID")
+    return get_alumno
 
 @alumnos.get('/alumnos', response_model=list[esquemas.Alumnos])
 def get_alumnos(db: Session = Depends(get_db)):

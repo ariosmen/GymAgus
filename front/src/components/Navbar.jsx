@@ -2,7 +2,7 @@ import agus from "../img/agus.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function Navbar({alumnos}) {
+export default function Navbar() {
 
   const [alumno, setAlumno] = useState("")
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ export default function Navbar({alumnos}) {
                 href="/alumnos/cargar"
                 className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
               >
-                Cargar
+                Cargar Alumno
               </a>
               <a
                 href="/alumnos"
@@ -36,9 +36,6 @@ export default function Navbar({alumnos}) {
                 Lista de Alumnos
               </a>
             </div>
-          </div>
-          <div className="text-white">
-            Cantidad de Alumnos: <span>{alumnos.length}</span>
           </div>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <label className="text-white p">Buscar</label>

@@ -51,6 +51,7 @@ export default function Cargar() {
       const res = await axios.delete(`http://localhost:8000/alumnos/${params.id}`);
       console.log(`Usuario ${params.id} Eliminado`);
       navigate('/alumnos')
+      
     }
     
     useEffect(() => {
@@ -129,7 +130,7 @@ export default function Cargar() {
         </div>
         <div className="flex justify-between p-4">
           <button className="text-lg text-white hover:text-cyan-400">
-            {params.id ? "Editar" : "Guardar"}
+            {params.id ? "Guardar Cambios" : "Guardar"}
           </button>
           <button
             className="text-lg text-white hover:text-red-600"
