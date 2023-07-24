@@ -6,25 +6,25 @@ from src import crud
 
 alumnos = APIRouter()
 
-@alumnos.get('/alumnos/{id}', response_model=esquemas.Alumnos)
+@alumnos.get('/alumnos/{id}')
 def get_alumnos(id: int, db: Session = Depends(get_db)):
     get_alumno = crud.get_alumno(db, id)
     if get_alumno is None:
         raise HTTPException(400, "No existe un alumno con ese ID")
     return get_alumno
 
-@alumnos.get('/alumnos', response_model=list[esquemas.Alumnos])
+@alumnos.get('/alumnos')
 def get_alumnos(db: Session = Depends(get_db)):
     return crud.get_alumnos(db)
 
-@alumnos.post('/alumnos', response_model=esquemas.Alumnos)
+@alumnos.post('/alumnos')
 def post_alumno(alumno: esquemas.CrearAlumno, db:Session = Depends(get_db)):
     new_alumno = crud.get_email(db, alumno.email)
     if new_alumno:
         raise HTTPException(400, "El alumno ya existe")
     return crud.agregar_alumno(db, alumno)
 
-@alumnos.put('/alumnos/{id}', response_model=esquemas.Alumnos)
+@alumnos.put('/alumnos/{id}')
 def put_alumno(id: int, alumno: esquemas.CrearAlumno, db: Session = Depends(get_db)):
     new_alumno = crud.get_alumno(db, id)
     if new_alumno is None:
