@@ -11,9 +11,7 @@ export default function TarjetaPersonal() {
   useEffect(() => {
     const fetchalumno = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:8000/alumnos/${params.id}`
-        );
+        const res = await axios.get(`http://localhost:8000/alumnos/${params.id}`)
         setAlumno(res.data);
       } catch (e) {
         navigate('/alumnos')
